@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="index.css">
+
+
+    <script>
+        window.tailwindConfig = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#1C3988',
+                    },
+                    fontFamily: {
+                        mulish: ['Mulish', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .form-container {
+    background: url('https://i.postimg.cc/pXwHH295/SignUp.png') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #fff;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-move-up {
+    animation: moveUp 2s ease-out;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-move-right {
+    animation: moveRight 2s ease-out;
+}
+
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.carousel-container {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    perspective: 800px;
+    margin: 50px auto;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotate 15s infinite linear;
+}
+
+.card {
+    position: absolute;
+    width: 190px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    backface-visibility: hidden;
+}
+
+.card:nth-child(1) {
+    transform: rotateY(0deg) translateZ(150px);
+}
+
+.card:nth-child(2) {
+    transform: rotateY(72deg) translateZ(150px);
+}
+
+.card:nth-child(3) {
+    transform: rotateY(144deg) translateZ(150px);
+}
+
+.card:nth-child(4) {
+    transform: rotateY(216deg) translateZ(150px);
+}
+
+.card:nth-child(5) {
+    transform: rotateY(288deg) translateZ(150px);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.form-container {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+.back-div {
+    background-image: url('https://i.postimg.cc/FFkTLkt4/Sign-Up-copy.png');
+    background-size: cover;
+    background-position: center;
+    /* Additional styling for your div */
+}
+.main{
+	width: 350px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- NAVBAR  -->
+    <nav class="">
+        <section class="bg-blue-900 font-mulish">
+            <div class="hidden sm:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center ">
+                        <div class="flex-shrink-0 flex items-center ">
+                            <span class="text-xl font-bold text-white font-mulish">Follow Us</span>
+                        </div>
+                        <div class="flex ml-4 space-x-4 items-center">
+                            <a href="#" class="text-white hover:text-gray-300">
+                                <i class="fab fa-facebook-f w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-300">
+                                <i class="fab fa-twitter w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-300">
+                                <i class="fab fa-instagram w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-300">
+                                <i class="fab fa-linkedin-in w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="ml-4 flex items-center text-white">
+                            <a href="#" class="text-white hover:text-gray-300">
+                                <i class="fas fa-phone w-4 h-4"></i>
+                            </a>
+                            <a href="tel:+1234567890" class="ml-2 text-white hover:underline text-sm">+121 685
+                                886602</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div
+                class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative py-4 flex justify-between items-center bg-white">
+                <a class="text-3xl font-bold leading-none" href="#">
+                    <img src="{{ url_for('static', filename='images/Dark_logo.png') }}" alt="Logo">
+                </a>
+                <div class="lg:hidden">
+                    <button class="navbar-burger flex items-center text-blue-600 p-3">
+                        <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Mobile menu</title>
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <ul
+                    class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6">
+                    <li><a class="text-sm text-gray-900 hover:text-gray-500" href="#">Search in
+                            offers</a></li>
+                    <li class="text-gray-300"></li>
+                    <li><a class="text-sm text-gray-900 hover:text-gray-500" href="#">Who We Are</a>
+                    </li>
+                    <li class="text-gray-300"></li>
+                    <li><a class="text-sm text-gray-900 hover:text-gray-500 cursor-pointer px-5 py-2" href="#"
+                            onclick="toggleSlideover()">Contacts</a></li>
+                </ul>
+                <div class="hidden lg:block">
+                    <a class="hidden lg:inline-block py-2 px-6 bg-gradient-to-r from-blue-900 to-blue-500 hover:from-blue-900 hover:to-blue-500 rounded-xl text-white mr-2"
+                        href="#">Login</a>
+                    <a class="hidden lg:inline-block py-2 px-6 bg-gradient-to-r from-blue-400 to-blue-900 hover:from-blue-900 hover:to-blue-900 rounded-xl text-white"
+                        href="#">Sign Up</a>
+                </div>
+            </div>
+            <div class="navbar-menu relative z-50 hidden">
+                <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+                <nav
+                    class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+                    <div class="flex items-center mb-8 justify-between">
+                        <a class="text-3xl font-bold leading-none">
+                            <img src="images/logo.png" alt="Logo">
+                        </a>
+                        <button class="navbar-close">
+                            <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                                    href="#">Search in offers</a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                                    href="#">Who We Are</a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded cursor-pointer px-5 py-2"
+                                    href="#" onclick="toggleSlideover()">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="pt-6">
+                            <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-900 hover:bg-blue-900 rounded-xl"
+                                href="#">Login</a>
+                            <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-900 bg-opacity-50 hover:bg-opacity-70 rounded-xl"
+                                href="#">Sign Up</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+    </nav>
+
+    <!-- SECTION ONE -->
+    <section class="font-mulish max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-white dark:bg-gray-900">
+        <div class="max-w-[1200px] 2xl:max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 py-8 px-4">
+                <!-- Text Section -->
+                <div class="flex flex-col items-center justify-center lg:items-start lg:text-left text-center">
+                    <h2
+                        class="text-4xl lg:text-6xl 2xl:text-7xl leading-tight text-gray-900 dark:text-white mb-4 lg:max-w-lg 2xl:max-w-xl">
+                        Welcome To Manzel
+                    </h2>
+                    <p
+                        class="text-lg lg:text-xl 2xl:text-2xl text-gray-500 dark:text-gray-400 mb-4 lg:max-w-lg 2xl:max-w-xl">
+                        We provide a complete service for the sale and rental of real estate. Operating in Morocco for
+                        over 15 years.
+                    </p>
+                </div>
+
+                <!-- Carousel Section -->
+                <div class="flex justify-center items-center lg:justify-start">
+                    <ul class="flex carousel-container">
+                        <li class="carousel" data-pos="-2">
+                            <img class="card" src="images/Rectangle 3.png" alt="">
+                            <img class="card" src="images/Rectangle 6.png" alt="">
+                            <img class="card" src="images/Rectangle 7.png" alt="">
+                            <img class="card" src="images/Rectangle 8.png" alt="">
+                            <img class="card" src="images/Rectangle 9.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="flex flex-col items-center lg:items-start dark:bg-gray-800">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 2xl:gap-12 p-6 h-full">
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Happy Customers
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">200+</dd>
+                    </div>
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Properties For Clients
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">10K+</dd>
+                    </div>
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Years Of Experience
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">15+</dd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="font-mulish max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-white dark:bg-gray-900">
+        <div class="max-w-[1200px] 2xl:max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 py-8 px-4"> -->
+                <!-- Text Section -->
+                <!-- <div class="flex flex-col items-center justify-center lg:items-start lg:text-left text-center">
+                    <h2
+                        class="text-4xl lg:text-6xl 2xl:text-7xl leading-tight text-gray-900 dark:text-white mb-4 lg:max-w-lg 2xl:max-w-xl">
+                        Welcome To Manzel
+                    </h2>
+                    <p
+                        class="text-lg lg:text-xl 2xl:text-2xl text-gray-500 dark:text-gray-400 mb-4 lg:max-w-lg 2xl:max-w-xl">
+                        We provide a complete service for the sale and rental of real estate. Operating in Morocco for
+                        over 15 years.
+                    </p>
+                </div> -->
+
+                <!-- Carousel Section -->
+                <!-- <div class="flex justify-center items-center lg:justify-start">
+                    <ul class="flex carousel-container">
+                        <li class="carousel" data-pos="-2">
+                            <img class="card" src="images/Rectangle 3.png" alt="">
+                            <img class="card" src="images/Rectangle 6.png" alt="">
+                            <img class="card" src="images/Rectangle 7.png" alt="">
+                            <img class="card" src="images/Rectangle 8.png" alt="">
+                            <img class="card" src="images/Rectangle 9.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <!-- Stats Section -->
+            <!-- <div class="flex flex-col items-center lg:items-start dark:bg-gray-800">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 2xl:gap-12 p-6 h-full">
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Happy Customers
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">200+</dd>
+                    </div>
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Properties For Clients
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">10K+</dd>
+                    </div>
+                    <div class="flex flex-col p-6">
+                        <dt class="text-sm lg:text-base 2xl:text-lg font-medium text-blue-900">
+                            Years Of Experience
+                        </dt>
+                        <dd class="mt-1 text-2xl lg:text-3xl 2xl:text-4xl font-extrabold text-blue-900">15+</dd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- END OF SECTION ONE -->
+
+    <!-- OFFERS SECTION  -->
+    <section class="font-mulish max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+        <div class="flex flex-col items-center lg:grid lg:grid-cols-2 gap-16 py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <!-- Text Section -->
+            <div class="flex flex-col items-center text-center lg:items-start lg:text-left font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 class="mb-4 text-5xl leading-tight tracking-tight font-extrabold text-gray-900 dark:text-white">
+                    Top Offers
+                </h2>
+                <p class="mb-4 w-1/1 ">
+                    Fill Your Career Dreams, Enjoy All The Achievements Of The City Center And Luxury Housing To The
+                    Fullest
+                </p>
+            </div>
+            <!-- Carousel Section -->
+
+        </div>
+        <!-- CARDS -->
+        
+        <section class="text-darkbleu">
+            <!-- <div class="lg:flex lg:justify-between px-[30px] lg:px-[134px] lg:items-center ">
+              <div class="mt-16 lg:mt-[118px] space-y-2">
+                <h2 class="font-bold lg:text-[50px] text-[30px] font-merri">Search for an offer</h2> -->
+                <!-- <p>Choose from the most advantageous offers</p>
+              </div>
+              <form action="{{ url_for('index') }}" method="get" class="flex space-x-4">
+                <select name="category" onchange="this.form.submit()" class="outline-none border-solid border-2 w-[250px] h-[45px] mt-10 lg:mt-[178px] rounded-md">
+                  <option value="">All Categories</option>
+                  {% for category in categories %}
+                  <option value="{{ category[0] }}" {% if category[0]|string == selected_category %}selected{% endif %}>
+                    {{ category[1] }}
+                  </option>
+                  {% endfor %}
+                </select>
+              </form>
+            </div>       -->
+        
+            <div id="houses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-[30px] lg:px-[134px] mt-[90px]">
+              {% for row in data %}
+              <div class="bg-white rounded-lg shadow-md overflow-hidden mb-[90px]">
+                <img class="h-72 w-full object-cover" src="{{ url_for('static', filename='images/' + row[0]) }}" alt="Apartment" >
+                  <div class="p-4">
+                      <h2 class="text-[21px] font-bold text-darkbleu font-merri mb-[21px]">{{ row[1] }}</h2>
+                      <div class="flex justify-between justify-center">
+                          <div>
+                              <p class="text-[17px] text-primary mb-[5px] font-open font-bold">{{ row[3] }} DH</p>
+                              <div class=" flex gap-[6px] items-center ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-primary" viewBox="0 0 16 16">
+                                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                </svg>
+                                <p class="text-darkbleu text-[17px] font-regular">{{ row[4] }}</p>
+                              </div>
+                          </div>
+                          <div>
+                              <p class="text-white bg-primary w-[100px] py-2 text-center rounded-full">{{ row[5] }}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+            </div>
+            
+            <div class="flex justify-center items-center" id="show-more-container">
+              {% if has_more %}
+              <button id="show-more" class="bg-white text-primary font-bold py-[13px] px-[24px] rounded-[4px] border-primary border-2 flex justify-center mb-[90px]">Show more</button>
+              {% endif %}
+            </div>
+            <div class="flex justify-center my-20 ">
+                <a href="#" class="border border-2 border-gray-200 px-8 py-2 rounded-lg"> See All Listings</a>
+            </div>
+          </section>
+
+        <!-- END OF CARDS -->
+    </section>
+
+    <!-- END OF OFFERS SECTION  -->
+
+    <!-- Why Choose Us -->
+    <div class="bg-gray-100">
+        <section id="features" class="relative block px-6 py-10 md:py-20 md:px-10">
+            <div class="mx-auto max-w-5xl text-center">
+                <h2 class="text-5xl font-mulish animate-move-up">Why Choose Us</h2>
+            </div>
+
+            <div class="mx-auto max-w-7xl grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="p-8 text-center">
+                    <div class="button-text mx-auto flex h-12 w-12 items-center justify-center">
+                        <img src="images/Icon.png" alt="Icon 1">
+                    </div>
+                    <h3 class="mt-6 text-xl font-medium text-blue-900">Find Your Future Home</h3>
+                    <p class="my-4 font-mulish text-blue-800 leading-relaxed">We Help You To Find New Home By Offering A
+                        Smart Real Estate Experience</p>
+                </div>
+
+                <div class="p-8 text-center">
+                    <div class="button-text mx-auto flex h-12 w-12 items-center justify-center">
+                        <img src="images/Icon (1).png" alt="Icon 2">
+                    </div>
+                    <h3 class="mt-6 text-xl font-medium text-blue-900">Experienced agents</h3>
+                    <p class="my-4 font-normal text-blue-900 leading-relaxed">Find an experienced agent who knows your
+                        market best</p>
+                </div>
+
+                <div class="p-8 text-center">
+                    <div class="button-text mx-auto flex h-12 w-12 items-center justify-center">
+                        <img src="images/Icon (2).png" alt="Icon 3">
+                    </div>
+                    <h3 class="mt-6 text-xl font-medium text-blue-900">Buy or rent homes</h3>
+                    <p class="my-4 font-normal text-blue-800 leading-relaxed">Millions of houses and apartments in your
+                        favourite cities</p>
+                </div>
+
+                <div class="p-8 text-center">
+                    <div class="button-text mx-auto flex h-12 w-12 items-center justify-center">
+                        <img src="images/Icon (3).png" alt="Icon 4">
+                    </div>
+                    <h3 class="mt-6 text-xl font-medium text-blue-900">List your own property</h3>
+                    <p class="my-4 font-normal text-blue-800 leading-relaxed">Sign up now and sell or rent your own
+                        properties</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- End Of Section Choose Us -->
+
+    <!-- Customers Section  -->
+    <section class="font-mulish max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+        <div
+            class="flex flex-col items-center lg:grid lg:grid-cols-2 gap-16 py-8 lg:py-16 px-4 mx-auto max-w-screen-xl lg:px-6">
+            <!-- Text Section -->
+            <div class="bg-white w-full items-center justify-center px-4 pt-16 pb-16" id="faq">
+                <h2 class="text-4xl font-mulish text-center lg:text-start">What Our Customers are saying?</h2>
+                <p class="pt-6 pb-8 text-base max-w-2xl text-center lg:text-left m-auto">
+                    Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected
+                    humour and the like.
+                </p>
+                <div class="flex flex-col lg:flex-row justify-center lg:justify-start">
+                    <div class="max-w-md bg-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:ml-auto">
+                        <div class="flex flex-col p-6">
+                            <dt class="order-2 mt-2 text-sm leading-6 font-semibold text-blue-900">
+                                Happy People
+                            </dt>
+                            <dd class="order-1 text-2xl font-extrabold text-blue-900">10m+</dd>
+                        </div>
+                    </div>
+                    <div class="max-w-md bg-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:ml-4">
+                        <div class="flex flex-col p-6">
+                            <dt class="order-2 mt-2 text-sm leading-6 font-semibold text-blue-900">
+                                Overall rating
+                            </dt>
+                            <dd class="order-1 text-2xl font-extrabold text-blue-900">4.88</dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Section -->
+            <div class="bg-white dark:bg-gray-800">
+                <section class="py-12 px-4 lg:px-0 max-w-3xl mx-auto">
+                    <div class="flex items-center justify-center lg:justify-start mb-8">
+                        <img class="w-16 h-16 rounded-full border-4 border-gray-200 dark:border-gray-600"
+                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                            alt="profile picture">
+                        <div class="ml-4">
+                            <p class="text-lg font-semibold text-gray-900 dark:text-white">Cameron Williamson</p>
+                            <p class="text-sm font-light text-gray-600 dark:text-gray-400">Entrepreneur</p>
+                        </div>
+                        <div class="items-end ml-32">
+                            <svg class="h-8 w-8 mb-4 text-gray-900 dark:text-gray-600 items-end" viewBox="0 0 24 27"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="max-w-lg p-6">
+                        <blockquote class="text-lg font-medium text-gray-800 dark:text-white">
+                            "Searches for multiplexes, property comparisons, and the loan estimator. Works great."
+                        </blockquote>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Of Customers Section  -->
+
+    <!-- AI SECTION  -->
+    <section
+        class="bg-blue-50  flex flex-1 w-full flex-col items-center justify-center text-center px-4 py-20 bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800">
+        <h1
+            class="mx-auto max-w-4xl font-mulish font-semibold text-5xl  tracking-normal text-white-300 dark:text-gray-300 sm:text-5xl">
+            Use Our
+            <span class="relative whitespace-nowrap text-orange-500 dark:text-orange-300">
+
+                <span class="relative"> AI</span>
+            </span>
+        </h1>
+        <h2 class="mt-9 max-w-3xl text-lg sm:text-white-400 text-white-500 dark:text-gray-300 leading-7">
+            Our artificial intelligence is designed to provide you with advanced tools to maximize your opportunities in
+            the real estate market. Utilizing sophisticated algorithms and in-depth analysis of historical data and
+            specific property characteristics, our AI employs a regression model to accurately predict future property
+            prices. This enables you to make informed decisions and optimize your investments.
+
+
+        </h2>
+        <h3 class="mt-3 text-blue-600">Would you like to test our AI and see how it can transform your approach to the
+            real estate
+            market?</h3>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-20 mt-12">
+
+            <form class="max-w-sm mx-auto md:mx-0" >
+                <select  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 px-12 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Bedrooms</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                </select>
+            </form>
+
+            <form class="max-w-sm mx-auto md:mx-0">
+                <select id="#"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 px-12 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Bathrooms</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </form>
+
+            <form class="max-w-sm mx-auto md:mx-0 ">
+                <select id="#"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 px-12 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Floors</option>
+                    <option>1</option>
+                    <option>1.5</option>
+                    <option>2</option>
+                </select>
+            </form>
+
+            <form class="max-w-sm mx-auto md:mx-0">
+                <select id="#"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 px-12 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option>Waterfront</option>
+                    <option>0</option>
+                    <option>1</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="price mt-11">
+            <h1 class="text-3xl text-blue-800 font-mulish font-bold mb-3 ">Price</h1>
+            <button type="price"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">7.77786
+                $</button>
+        </div>
+
+    </section>
+    <!-- END WITH AI SECTION  -->
+
+
+    <!-- START FOOTER  -->
+    <footer class="bg-primary h-[120px] lg:h-[150px]">
+        <div class="flex justify-center items-center mb-2 pt-[35px] lg:pt-[45px]">
+          <img src="{{ url_for('static', filename='images/White_logo.png') }}" alt="white logo" class="w-[96px] h-[33px] lg:w-[150px] lg:h-[52px] ">
+        </div>
+  
+        <div class="flex justify-center items-center items-stretch space-x-2 lg:space-x-4">
+          <a href="https://www.facebook.com/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-facebook text-white w-[14px] h-[14px] lg:w-[16px] lg:h-[16px]" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+            </svg>
+          </a>
+          <a href="https://x.com/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x text-white w-[14px] h-[14px] lg:w-[16px] lg:h-[16px]" viewBox="0 0 16 16">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-white w-[14px] h-[14px] lg:w-[16px] lg:h-[16px]" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+            </svg>
+          </a>
+          <a href="https://fr.linkedin.com/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin text-white w-[14px] h-[14px] lg:w-[16px] lg:h-[16px]" viewBox="0 0 16 16">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+
+
+    <!-- END FOOTER -->
+
+
+    <!-- CONTACT US -->
+    <div class="contact slide relative w-full h-full">
+        <div class="w-full h-full flex items-center justify-center">
+            <!-- Slideover Container -->
+            <div id="slideover-container" class="w-full h-full fixed inset-0 invisible">
+                <div onclick="toggleSlideover()" id="slideover-bg" class="absolute inset-0 bg-gray-900 opacity-50">
+                </div>
+                <div id="slideover"
+                    class="absolute right-0 top-0 h-full bg-white w-96 transform translate-x-full transition-transform duration-300 ease-out">
+                    <!-- Close Button -->
+                    <button onclick="toggleSlideover()"
+                        class="absolute top-0 right-0 m-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <!-- Contact Content -->
+                    <div
+                        class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-20 h-full flex flex-col justify-center">
+                        <div class="mb-6 max-w-xl">
+                            <h2
+                                class="text-xl sm:text-xl lg:text-2xl text-blue-900 dark:text-white mb-4 font-medium leading-tight">
+                                Please do not hesitate to contact us with any questions or requests for information.
+                            </h2>
+                        </div>
+                        <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-1">
+                            <!-- Contact Methods -->
+                            <div class="flex items-start sm:items-center space-x-4">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-full bg-blue-400 text-blue-900">
+                                    <i class="fa-solid fa-phone text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-2">By
+                                        Phone At:</h3>
+                                    <p class="text-gray-600 dark:text-slate-400">+121 685 886602</p>
+                                    <p class="text-gray-600 dark:text-slate-400">Monday to Friday, 9:00 AM to 6:00 PM
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start sm:items-center space-x-4">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-full bg-blue-400 text-blue-900">
+                                    <i class="fa-solid fa-envelope-open text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-2">By
+                                        email:</h3>
+                                    <p class="text-gray-600 dark:text-slate-400">manzel.21@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start sm:items-center space-x-4">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-full bg-blue-400 text-blue-900">
+                                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-2">Or via
+                                        direct chat on WhatsApp:</h3>
+                                    <p class="text-gray-600 dark:text-slate-400">+1(514) 555-1234</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/alpine.js" defer></script>
+
+
+    <!-- END OF CONTACT US -->
+
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // open
+    const burger = document.querySelectorAll('.navbar-burger');
+    const menu = document.querySelectorAll('.navbar-menu');
+
+    if (burger.length && menu.length) {
+        for (var i = 0; i < burger.length; i++) {
+            burger[i].addEventListener('click', function () {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    // close
+    const close = document.querySelectorAll('.navbar-close');
+    const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+    if (close.length) {
+        for (var i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', function () {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    if (backdrop.length) {
+        for (var i = 0; i < backdrop.length; i++) {
+            backdrop[i].addEventListener('click', function () {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+});
+
+// Cards 
+const state = {};
+const carouselList = document.querySelector('.carousel__list');
+const carouselItems = document.querySelectorAll('.carousel__item');
+const elems = Array.from(carouselItems);
+
+carouselList.addEventListener('click', function (event) {
+    var newActive = event.target;
+    var isItem = newActive.closest('.carousel__item');
+
+    if (!isItem || newActive.classList.contains('carousel__item_active')) {
+        return;
+    };
+
+    update(newActive);
+});
+
+const update = function (newActive) {
+    const newActivePos = newActive.dataset.pos;
+
+    const current = elems.find((elem) => elem.dataset.pos == 0);
+    const prev = elems.find((elem) => elem.dataset.pos == -1);
+    const next = elems.find((elem) => elem.dataset.pos == 1);
+    const first = elems.find((elem) => elem.dataset.pos == -2);
+    const last = elems.find((elem) => elem.dataset.pos == 2);
+
+    current.classList.remove('carousel__item_active');
+
+    [current, prev, next, first, last].forEach(item => {
+        var itemPos = item.dataset.pos;
+
+        item.dataset.pos = getPos(itemPos, newActivePos)
+    });
+};
+
+const getPos = function (current, active) {
+    const diff = current - active;
+
+    if (Math.abs(current - active) > 2) {
+        return -current
+    }
+
+    return diff;
+}
+
+// SLIDE PAGE
+function toggleSlideover() {
+    document.getElementById('slideover-container').classList.toggle('invisible');
+    document.getElementById('slideover-bg').classList.toggle('opacity-0');
+    document.getElementById('slideover-bg').classList.toggle('opacity-50');
+    document.getElementById('slideover').classList.toggle('translate-x-full');
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselItems = document.querySelectorAll('.carousel__item');
+    carouselItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('animate-move-up');
+        }, index * 500);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselItem = document.querySelector('.carousel__item');
+    carouselItem.classList.add('animate-move-right');
+});
+
+
+    </script>
+
+    <!-- Add this to your existing HTML -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('select').change(function() {
+        var bedrooms = $('select:eq(0)').val();
+        var bathrooms = $('select:eq(1)').val();
+        var floors = $('select:eq(2)').val();
+        var waterfront = $('select:eq(3)').val();
+
+        $.ajax({
+            url: '/predict',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                bedrooms: bedrooms,
+                bathrooms: bathrooms,
+                floors: floors,
+                waterfront: waterfront
+            }),
+            success: function(response) {
+                $('.price button').text(response.predicted_price.toFixed(2) + ' $');
+            }
+        });
+    });
+});
+</script>
+</body>
+
+
+</html>

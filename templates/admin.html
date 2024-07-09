@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PFA Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: { 
+                  open: ["Open Sans", "sans-serif"],
+                  merri: ["Merriweather", "sans-serif"]
+              },
+              colors: {
+                  primary:"#1C3988",
+                  lightbleu: "#F3F3FA",
+                  darkbleu: "#091638",
+              },
+            },
+          },
+        };
+      </script>
+</head>
+<body class="font-open flex h-screen overflow-hidden">
+    <div class="sticky top-0 z-40  h-screen">
+         {% include 'sidebar.html' %}
+    </div>
+    
+    <div class="p-[50px] flex-1 overflow-y-auto w-full">
+        <div class="flex justify-between items-center">     
+            <h1 class="text-primary font-semibold text-[25px] my-10 ">Houses </h1>
+            <div class="w-[112px] flex justify-center bg-primary rounded-[8px] py-[10px]">
+                <a href="{{ url_for('add_house') }}" class="text-white font-medium">Add house</a>
+            </div>
+        </div>
+        <div class="flex pb-10" >
+            <div class="w-full rounded-lg shadow">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b-2 border-gray-200">
+                        <tr class="bg-gray-100 text-Darkblc">
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Houses</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Title</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Id</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Price</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Location</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Categories</th>
+                            <th class="p-3 text-sm font-semibold tracking-wide text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        {% for row in data %}
+                        <tr>
+                            
+                            <td class="p-3 ">
+                                <img src="{{ url_for('static', filename='images/' + row[0]) }}" alt="Image" class="w-[50px] h-[50px] object-cover">
+                            </td>
+                            <td class="p-3 text-sm text-gray-700">{{ row[1] }}</td>
+                            <td class="p-3 text-sm text-gray-700">{{ row[2] }}</td>
+                            <td class="p-3 text-sm text-gray-700">{{ row[3] }}</td>
+                            <td class="p-3 text-sm text-gray-700">{{ row[4] }}</td>
+                            <td class="p-3 text-sm text-gray-700">{{ row[5] }}</td>
+                            <td class="flex gap-x-4 items-center justify-center py-4">
+                                <a href="{{ url_for('update_houses', id=row[2]) }}" class="w-[75px] text-center p-2 text-xs font-bold text-primary border-primary border-2 rounded-lg">Edit</a>
+                                <form action="{{ url_for('delete_houses', id=row[2]) }}" method="POST">
+                                    <button type="submit" class="w-[75px] text-center p-2 text-xs font-bold tracking-wider text-white border-primary border-2 rounded-lg bg-primary">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

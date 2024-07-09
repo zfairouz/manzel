@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin sidebar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: { 
+                  open: ["Open Sans", "sans-serif"],
+                  merri: ["Merriweather", "sans-serif"]
+              },
+              colors: {
+                  primary:"#1C3988",
+                  lightbleu: "#F3F3FA",
+                  darkbleu: "#091638",
+                  gray: "#5C5F6A",
+                  lightgray: "#F6F6F6",
+              },
+            },
+          },
+        };
+      </script>
+</head>
+<body class="bg-lightgray font-open">
+
+    <section class=" flex flex-col bg-white h-screen sticky w-[300px] ">
+        <div class="flex justify-center mb-[48px] mt-[36px]">
+            <img src="/static/images/logo_blue.png" alt="white logo" class="w-[116px] h-[40px]">
+        </div>
+
+        <nav class="flex flex-col font-medium ml-8 bg-white text-gray">
+            <a href="/" role="button" tabindex="0" class="flex items-center group p-4 rounded-l-lg leading-tight transition-all hover:bg-lightgray hover:text-primary   outline-none">
+                <div class="grid place-items-center mr-4">
+                    <svg  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.23077 10.1667H18.7692M5.23077 10.1667V18.3333C5.23077 18.6427 5.36044 18.9395 5.59125 19.1583C5.82207 19.377 6.13511 19.5 6.46154 19.5H17.5385C17.8649 19.5 18.178 19.377 18.4087 19.1583C18.6395 18.9395 18.7692 18.6427 18.7692 18.3333V10.1667M5.23077 10.1667C4.55103 10.1667 4 9.64433 4 9V6.66667C4 6.02234 4.55103 5.5 5.23077 5.5H18.7692C19.449 5.5 20 6.02234 20 6.66667V9C20 9.64433 19.449 10.1667 18.7692 10.1667M10.1538 13.6667H13.8462" 
+                         class="stroke-[#5C5F6A] group-hover:stroke-primary " stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                Houses
+            </a>
+            <a href="#" role="button" tabindex="0" class="flex items-center group  p-4 rounded-l-lg leading-tight transition-all hover:bg-lightgray hover:text-primary   outline-none">
+                <div class="grid place-items-center mr-4">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3.5H6.38321L7.58853 15.4769C7.63862 15.8071 7.80643 16.108 8.06102 16.3243C8.31561 16.5406 8.63984 16.6576 8.97395 16.6538H17.7021C18.0042 16.6696 18.3032 16.5861 18.5534 16.4161C18.8035 16.2461 18.9912 15.9989 19.0875 15.7123L20.9302 10.1738C20.999 9.96564 21.0173 9.74406 20.9836 9.52739C20.9498 9.31072 20.865 9.10517 20.7362 8.92769C20.6021 8.73894 20.4227 8.58681 20.2146 8.48522C20.0065 8.38362 19.7761 8.33581 19.5447 8.34615H6.8681M11.5619 11.1154V13.8846M15.7182 11.1154V13.8846M17.4666 21.5C17.2829 21.5 17.1067 21.4271 16.9768 21.2972C16.8469 21.1674 16.7739 20.9913 16.7739 20.8077C16.7739 20.6241 16.8469 20.448 16.9768 20.3182C17.1067 20.1883 17.2829 20.1154 17.4666 20.1154C17.6503 20.1154 17.8265 20.1883 17.9564 20.3182C18.0863 20.448 18.1593 20.6241 18.1593 20.8077C18.1593 20.9913 18.0863 21.1674 17.9564 21.2972C17.8265 21.4271 17.6503 21.5 17.4666 21.5ZM8.46134 21.5C8.27762 21.5 8.10143 21.4271 7.97152 21.2972C7.84161 21.1674 7.76863 20.9913 7.76863 20.8077C7.76863 20.6241 7.84161 20.448 7.97152 20.3182C8.10143 20.1883 8.27762 20.1154 8.46134 20.1154C8.64506 20.1154 8.82126 20.1883 8.95116 20.3182C9.08107 20.448 9.15406 20.6241 9.15406 20.8077C9.15406 20.9913 9.08107 21.1674 8.95116 21.2972C8.82126 21.4271 8.64506 21.5 8.46134 21.5Z" 
+                        class="stroke-[#5C5F6A] group-hover:stroke-primary " stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                Orders
+            </a>
+            <a href="#" role="button" tabindex="0" class="flex items-center group p-4 rounded-l-lg leading-tight transition-all hover:bg-lightgray hover:text-primary   outline-none">
+                <div class="grid place-items-center mr-4">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7692 11.1666C16.681 11.1666 18.2308 9.67424 18.2308 7.83331C18.2308 5.99237 16.681 4.5 14.7692 4.5M18.2308 20.5H21V19.7771C20.9889 18.7608 20.7106 17.7638 20.191 16.8792C19.6713 15.9946 18.9274 15.2513 18.0285 14.7186C17.4475 14.3743 16.8139 14.1253 16.1538 13.9793M9.23077 11.1666C11.1425 11.1666 12.6923 9.67424 12.6923 7.83331C12.6923 5.99237 11.1425 4.5 9.23077 4.5C7.31902 4.5 5.76923 5.99237 5.76923 7.83331C5.76923 9.67424 7.31902 11.1666 9.23077 11.1666ZM3 20.4999H15.4615V19.7771C15.4505 18.7608 15.1722 17.7638 14.6526 16.8792C14.1329 15.9946 13.3889 15.2512 12.4901 14.7186C11.5912 14.1859 10.5668 13.8814 9.51257 13.8333C9.41858 13.829 9.32462 13.8268 9.23077 13.8266C9.13692 13.8268 9.04296 13.829 8.94897 13.8333C7.89474 13.8814 6.87035 14.1859 5.97148 14.7186C5.07263 15.2512 4.32864 15.9946 3.80899 16.8792C3.28935 17.7638 3.01102 18.7608 3 19.7771V20.4999Z" 
+                        class="stroke-[#5C5F6A] group-hover:stroke-primary " stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>  
+                </div>
+                Customers 
+            </a>
+            <!-- <a href="#" role="button" tabindex="0" class="flex items-center p-4 rounded-l-lg leading-tight transition-all hover:bg-lightgray hover:text-primary   outline-none">
+                <div class="grid place-items-center mr-4">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 6L14.163 10.2787L19 10.969L15.5 14.2976L16.326 19L12 16.7787L7.674 19L8.5 14.2976L5 10.969L9.837 10.2787L12 6Z" stroke="#5C5F6A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                </div>
+                Reviews
+            </a> -->
+            <a href="#" role="button" tabindex="0" class="flex items-center group p-4 rounded-l-lg leading-tight transition-all hover:bg-lightgray hover:text-primary   outline-none">
+                <div class="grid place-items-center mr-4">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.62731 6.28846L10.2037 4.83692C10.3009 4.59116 10.472 4.37977 10.6944 4.23043C10.9169 4.0811 11.1804 4.00078 11.4504 4H12.5496C12.8196 4.00078 13.0831 4.0811 13.3056 4.23043C13.528 4.37977 13.699 4.59116 13.7962 4.83692L14.3727 6.28846L16.3297 7.38692L17.9115 7.15154C18.1749 7.11666 18.443 7.15895 18.6818 7.27305C18.9204 7.38715 19.1189 7.56788 19.252 7.79231L19.7882 8.70769C19.9256 8.93569 19.989 9.19897 19.9698 9.46278C19.9507 9.72659 19.85 9.97855 19.681 10.1854L18.7024 11.4015V13.5985L19.7078 14.8146C19.8768 15.0215 19.9775 15.2734 19.9966 15.5372C20.0158 15.801 19.9524 16.0643 19.815 16.2923L19.2788 17.2077C19.1457 17.4321 18.9472 17.6128 18.7086 17.727C18.4698 17.841 18.2017 17.8834 17.9383 17.8485L16.3565 17.6131L14.3995 18.7115L13.8231 20.1631C13.7258 20.4088 13.5548 20.6202 13.3324 20.7696C13.1099 20.9189 12.8464 20.9992 12.5764 21H11.4504C11.1804 20.9992 10.9169 20.9189 10.6944 20.7696C10.472 20.6202 10.3009 20.4088 10.2037 20.1631L9.62731 18.7115L7.67019 17.6131L6.08841 17.8485C5.82502 17.8834 5.55695 17.841 5.31826 17.727C5.07959 17.6128 4.88106 17.4321 4.74791 17.2077L4.21171 16.2923C4.07431 16.0643 4.01101 15.801 4.03016 15.5372C4.0493 15.2734 4.15 15.0215 4.31895 14.8146L5.29751 13.5985V11.4015L4.29214 10.1854C4.12319 9.97855 4.02249 9.72659 4.00335 9.46278C3.9842 9.19897 4.0475 8.93569 4.1849 8.70769L4.7211 7.79231C4.85425 7.56788 5.05278 7.38715 5.29145 7.27305C5.53014 7.15895 5.79821 7.11666 6.0616 7.15154L7.64338 7.38692L9.62731 6.28846ZM9.319 12.5C9.319 13.0173 9.47624 13.5229 9.77082 13.953C10.0654 14.3831 10.4841 14.7183 10.974 14.9163C11.4639 15.1142 12.003 15.166 12.523 15.0651C13.0431 14.9642 13.5208 14.7151 13.8957 14.3494C14.2707 13.9836 14.526 13.5176 14.6295 13.0102C14.7329 12.5029 14.6798 11.977 14.4769 11.4991C14.274 11.0212 13.9304 10.6128 13.4895 10.3254C13.0486 10.038 12.5302 9.88462 12 9.88462C11.2889 9.88462 10.607 10.1602 10.1042 10.6506C9.60147 11.1411 9.319 11.8064 9.319 12.5Z" 
+                        class="stroke-[#5C5F6A] group-hover:stroke-primary " stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                Settings
+            </a>
+        </nav>
+    </section>
+</body>
+</html>
